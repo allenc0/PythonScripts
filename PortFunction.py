@@ -1,5 +1,5 @@
 # Port Scanner with functions to allow for IPv4/IPv6 scanning as well as named targets(dns)
-# Todo: Add IPv6 functionality, Add Name Resolution
+# todo: Add IPv6 functionality, Add Name Resolution
 
 # import libraries
 import sys
@@ -30,7 +30,8 @@ def scan_ip4(low_port, high_port):
             if result == 0:
                 print("Port {} is open".format(port))
             s.close()
-
+            
+    # Clean exceptions
     except KeyboardInterrupt:
         print("\nExiting Program")
         sys.exit()
@@ -55,13 +56,16 @@ def scan_name(low_port, high_port):
 
 
 def main():
-
+    
+    # todo: Make welcome menu (find replacement of pyfiglet)
+    
     print("Are you scanning: (1)IPv4, (2)IPv6, (3)Public Hostname")
     scan_type = input("Please choose, [1, 2, or 3]: ")
 
     low_port = input("Enter first port to start scanning: ")
     high_port = input("Enter last port to finish scanning: ")
-
+    
+    # Determine which function to goto next
     if scan_type == "1":
         scan_ip4(low_port, high_port)
     elif scan_type == "2":
